@@ -1,17 +1,58 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import styled, { ThemeProvider } from "styled-components";
+import { Modal } from "./components/";
+import { darkTheme, defaultTheme, GlobalStyle } from "./utils";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const Wrapper = styled.div`
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const App = () => {
+  const [useDarkTheme, setUseDarkTheme] = useState(false);
+  const theme = {
+    status: {},
+  };
+  return (
+    <div>
+      <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
+        <button
+          style={{
+            margin: "0px 16px 24px",
+            padding: "8px",
+            background: "none",
+          }}
+          onClick={() => setUseDarkTheme(true)}
+        >
+          Dark Theme
+        </button>
+        <button
+          style={{
+            margin: "0px 16px 24px",
+            padding: "8px",
+            background: "none",
+          }}
+          onClick={() => setUseDarkTheme(false)}
+        >
+          Default Theme
+        </button>
+        <Wrapper
+          style={{
+            background: useDarkTheme
+              ? darkTheme.primaryColor
+              : defaultTheme.primaryColor,
+          }}
+        >
+          <Modal />
+          <GlobalStyle />
+        </Wrapper>
+      </ThemeProvider>
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector("#root"));
