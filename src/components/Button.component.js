@@ -110,7 +110,7 @@ export const SecondaryButton = styled(PrimaryButton)`
   ${applyStyleModifiers(BUTTON_MODIFIERS)}
 `;
 
-export const TerciaryButton = styled(Button)`
+export const TertiaryButton = styled(Button)`
   background-color: white;
   border-radius: 5px;
   border: solid 2px ${(props) => props.theme.primaryColor};

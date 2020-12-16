@@ -14,9 +14,7 @@ const Wrapper = styled.div`
 
 const App = () => {
   const [useDarkTheme, setUseDarkTheme] = useState(false);
-  const theme = {
-    status: {},
-  };
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
       <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme}>
@@ -40,6 +38,16 @@ const App = () => {
         >
           Default Theme
         </button>
+        <button
+          style={{
+            margin: "0px 16px 24px",
+            padding: "8px",
+            background: "none",
+          }}
+          onClick={() => setShowModal(!showModal)}
+        >
+          Show modal
+        </button>
         <Wrapper
           style={{
             background: useDarkTheme
@@ -47,7 +55,7 @@ const App = () => {
               : defaultTheme.primaryColor,
           }}
         >
-          <Modal />
+          <Modal showModal={showModal} setShowModal={setShowModal} />
           <GlobalStyle />
         </Wrapper>
       </ThemeProvider>

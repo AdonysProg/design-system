@@ -1,0 +1,21 @@
+import { Meta, Story, Preview } from "@storybook/addon-docs/blocks";
+import { withKnobs, boolean } from "@storybook/addon-knobs";
+import { Modal } from "./Modal.component";
+
+<Meta title="Design System| Modals" component={Modal} />
+
+# Modals
+
+Modals are used to show any information above any content.
+
+## Usage
+
+Modals are used mostly for Ads/Sign In/Up forms or emergent windows.
+
+## Primary Modal
+
+<Preview withToolbar>
+  <Story name="Primary">
+    <Modal showModal={boolean("Show modal", true)}/>
+  </Story>
+</Preview>
